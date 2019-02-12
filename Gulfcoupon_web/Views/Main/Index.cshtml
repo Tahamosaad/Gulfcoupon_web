@@ -1,0 +1,71 @@
+﻿@model IEnumerable<DAL.BusinessName>
+@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .card {
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        transition: 0.3s;
+        width: 40%;
+        border-radius: 5px;
+    }
+
+        .card:hover {
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+        }
+
+    img {
+        border-radius: 5px 5px 0 0;
+    }
+
+    .container {
+        padding: 2px 16px;
+    }
+</style>
+
+
+
+
+<div class="form-group">
+    <div class="container">
+        <div class="row">
+
+            @foreach (var item in Model)
+            {
+                <div class="card-group">
+
+
+
+
+
+
+                    <div class="card">
+                        <div class="col-sm-8">
+                            <div class="card-image">
+                                <img src="~/Logoimg/@item.Logo" alt="..." style="width:100%">
+                                <div class="card-content">
+
+                                    <h3>@item.BusinessName1</h3>
+                                    <p>@item.Email</p>
+
+
+                                    <p>
+                                        <a href="/business/Create" class="btn btn-primary" role="button">
+                                            add business
+                                        </a> <a href="/Branches/Index" class="btn btn-default" name="CreatePost" role="button">view branches</a>
+                                    </p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+            }
+        </div>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+﻿
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>id</th>
+            <th>type name</th>
+            <th>type Description</th>
+            <th>photo</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.ID</td>
+                <td>@item.BusinessType1</td>
+
+                <td>@item.Description</td>
+
+                <td>
+                    <img src="~/businessImg/@item.Photo" class="img-thumbnail" width="100">
+                </td>
+
+
+            </tr>
+        }
+    </tbody>
+</table>

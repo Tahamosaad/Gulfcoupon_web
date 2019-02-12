@@ -1,0 +1,150 @@
+﻿@model Gulfcoupon_web.Models.Pramters
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2>Reports</h2>
+    <form name="form1" method="post"  id="form1">
+        <div class="form-horizontal">
+            <table class="table1 ">
+                <thead>
+                    <tr>
+                        <td class="style1" colspan="5" align="justify">
+                            <span id="lblTitle" style="display:inline-block;color:Sienna;background-color:Transparent;font-size:X-Large;font-weight:bold;font-style:italic;height:19px;">Items List</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="style1" align="justify" colspan="5">
+                            <span id="Label3" style="display:inline-block;color:Sienna;background-color:Transparent;font-family:Arial;font-size:12pt;font-weight:bold;font-style:normal;width:32px;">ID:</span>
+
+                            <span id="txtRepID" style="color:Sienna;font-family:Arial;font-size:12pt;font-weight:bold;">10</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="5" align="justify">
+
+                            <span id="Label2" style="background-color:Transparent;font-family:Arial;">
+                                Specify the search criteria,then click <b>Run</b> button:
+                            </span>
+                        </td>
+                    </tr>
+                </thead>
+
+
+                <tbody>
+                    <tr>
+                        <td align="justify">
+                            <span>select Field</span>
+                        </td>
+
+                        <td>
+                            <select name="ddlFields" id="ddlFields" style="color:#000333;font-family:Verdana,Tahoma,Arial,sans-serif;font-size:8pt;height:22px;width:30%;position: static; height: 22px;">
+                                <option value="Item Code">Item Code</option>
+                                <option value="Description">Description</option>
+                                <option value="Cat1. Code">Cat1. Code</option>
+                                <option value="Category 1">Category 1</option>
+                                <option value="Cat2. Code">Cat2. Code</option>
+                                <option value="Category 2">Category 2</option>
+                                <option value="Cat3. Code">Cat3. Code</option>
+                                <option value="Category 3">Category 3</option>
+                                <option value="Cat4. Code">Cat4. Code</option>
+                                <option value="Category 4">Category 4</option>
+                                <option value="Vendor">Vendor</option>
+                                <option value="PartNumber">PartNumber</option>
+                                <option value="GroupID">GroupID</option>
+                                <option value="ManufacturerCode">ManufacturerCode</option>
+                                <option value="Branch">Branch</option>
+                                <option value=""></option>
+
+                            </select>
+
+                            <select name="ddlOps" id="ddlOps" style="color:#000333;font-family:Verdana,Tahoma,Arial,sans-serif;font-size:8pt;position: static;">
+                                <option value="=">=</option>
+                                <option value=">">&gt;</option>
+                                <option value=">=">&gt;=</option>
+                                <option value="<">&lt;</option>
+                                <option value="<=">&lt;=</option>
+                                <option value="<>">&lt;&gt;</option>
+                                <option value="Like">Like</option>
+
+                            </select>
+
+                            <input type="text" id="txtValue" style="width:30%;position: static; height: 22px;">
+                            @*@Html.TextBoxFor( x => x.CriteriaCap, new {@name = "txtValue", @id = "txtValue", @class =  "form-control", @style = "width:30%;position: static; height: 22px;" })*@
+                            <img id="BtnSearch" onclick="OpenPopup();" height="22" alt="" src="~/Images/Search.gif" width="24" style="cursor: hand">
+
+                            <select name="ddlLink" id="ddlLink" style="color:#000333;font-family:Verdana,Tahoma,Arial,sans-serif;font-size:8pt;width:68px;position: static;">
+                                <option value="AND">AND</option>
+                                <option value="OR">OR</option>
+
+                            </select>
+                        </td>
+
+                        <td align="justify">
+                            <input name="btnAdd" type="button" id="btnAdd" value="Add Line" onclick="AddLine();" style="height: 25px; width: 63px">
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td></td>
+
+                        <td align="justify">
+                            <select size="4" name="lstCriteria" id="lstCriteria" style="height:120px;width:474px;position: static;">
+                                <option value="Item Code = 09010101-109 AND">Item Code = 09010101-109 AND</option>
+
+                            </select>
+                        </td>
+                        <td valign="top" align="justify">
+                            <input name="BtnDel" type="button" id="BtnDel" value="Remove" onclick="DelLine();" style="height: 25px; width: 64px">
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td></td>
+
+                        <td align="justify">
+                            <select name="ddlDest" id="ddlDest">
+                                <option selected="selected" value="0">Preview</option>
+                                <option value="1">Export PDF</option>
+                                <option value="2">Export Excel</option>
+                                <option value="3">Excel Data Only</option>
+                                <option value="4">Rich Text Format</option>
+                                <option value="5">Html</option>
+                                <option value="6">WinWord</option>
+                                <option value="7">Crystal Report</option>
+                                <option value="11">Print</option>
+
+                            </select>
+
+                            <select name="ddlSort" id="ddlSort">
+                                <option value=" "> </option>
+                                <option value="ASC">ASC</option>
+                                <option value="DESC">DESC</option>
+
+                            </select>
+                        </td>
+                        <td>
+                            <input name="btnGo" type="submit" id="btnGo" value="Run" onclick="OpenReport();" style="width: 64px">
+                        </td>
+
+                    </tr>
+
+                </tbody>
+            </table>
+
+            </div>
+        
+
+</form>
+
+
+
+<link href="~/Content/CitrusIsland.css" rel="stylesheet" type="text/css">
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/Scripts/loadreport.js"></script>
+
+

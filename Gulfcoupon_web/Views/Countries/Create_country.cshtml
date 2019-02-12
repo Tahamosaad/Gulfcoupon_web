@@ -1,0 +1,43 @@
+﻿@model DAL.Countries
+@{
+    ViewBag.Title = "Create_country";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@if (TempData["success"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["success"]
+    </div>
+}
+@if (TempData["error"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["error"]
+    </div>
+}
+<h2>Create_country</h2>
+
+<form method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label>ID :</label>
+        @Html.TextBoxFor(x => x.Country_ID, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.Country_ID, null, new { @class = "text-danger" })
+    </div>
+    <div class="form-group">
+        <label> name :</label>
+        @Html.TextBoxFor(x => x.name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.name, null, new { @class = "text-danger" })
+    </div>
+ 
+    <div class="form-group">
+        <label>Flag photo :</label>
+        @Html.TextBoxFor(x => x.flag, new { @class = "form-control", @type = "file" })
+
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">
+            <i class="glyphicon glyphicon-floppy-save"></i>
+        </button>
+    </div>
+    @Html.Action("GetAll")
+</form>

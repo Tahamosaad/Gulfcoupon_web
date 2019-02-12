@@ -1,0 +1,27 @@
+﻿
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>id</th>
+            <th>name</th>
+           
+            <th>flag</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Country_ID</td>
+                <td>@item.name</td>
+                
+                <td>
+                    <img src="~/FlagImg/@item.flag" class="img-thumbnail" width="100">
+                </td>
+
+
+            </tr>
+        }
+    </tbody>
+</table>
